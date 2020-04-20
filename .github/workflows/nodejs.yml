@@ -34,18 +34,24 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: check
-        run: dpl --provider=heroku --app=ci-cd-proj --api-key=${{ secrets.HEROKU_API_KEY }}
-#      - name: init
-#        env:
-#          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-#        run: git init
-#      - name: Add remote
-#        env:
-#          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-#        run: heroku git:remote -a ${{ secrets.heroku_app_name }} 
-#      - name: Push
-#        env:
-#          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-#        run: git push https://abc:${{ secrets.HEROKU_API_KEY }}@git.heroku.com/ci-cd-proj.git master
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: heroku status
+      - name: init
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: git init
+      - name: Add remote
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: heroku git:remote -a ${{ secrets.heroku_app_name }} 
+      - name: unshallow
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: git fetch --all --unshallow
+      - name: Push
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: git push https://abc:${{ secrets.HEROKU_API_KEY }}@git.heroku.com/ci-cd-proj.git master
         
     
