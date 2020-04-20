@@ -44,14 +44,10 @@ jobs:
       - name: Add remote
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: heroku git:remote -a ${{ secrets.heroku_app_name }} 
-      - name: unshallow
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: git fetch https://abc:${{ secrets.HEROKU_API_KEY }}@git.heroku.com/ci-cd-proj.git --unshallow
+        run: git remote add heroku https://abc:${{ secrets.HEROKU_API_KEY }}@git.heroku.com/ci-cd-proj.git master
       - name: Push
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: git push https://abc:${{ secrets.HEROKU_API_KEY }}@git.heroku.com/ci-cd-proj.git master
+        run: git push heroku master
         
     
