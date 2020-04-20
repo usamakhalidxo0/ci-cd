@@ -8,4 +8,5 @@ const PORT = process.env.PORT || 5000;
 console.log("Hello World");
 app.listen(PORT, () => {
   console.log(`Listening at ${PORT}`);
+  res.send('hello world');
 })
