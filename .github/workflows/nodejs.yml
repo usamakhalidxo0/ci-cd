@@ -35,7 +35,7 @@ jobs:
       - name: init
         run: git init
       - name: add remote
-        run: git remote add origin https://usamakhalidxo0:UzazongeBang1!8?@github.com/usamakhalidxo0/ci-cd.git
+        run: git remote add origin https://github.com/usamakhalidxo0/ci-cd.git
       - name: pull
         run: git pull
       - name: add heroku
