@@ -35,10 +35,6 @@ jobs:
       - name: Add remote
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: git remote add heroku https://abc:${{ secrets.HEROKU_API_KEY }}@git.heroku.com/ci-cd-proj.git
-      - name: Push
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: git push heroku master
+        run: git remote push https://abc:${{ secrets.HEROKU_API_KEY }}@git.heroku.com/ci-cd-proj.git master
         
     
