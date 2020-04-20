@@ -41,7 +41,7 @@ jobs:
       - name: ls
         run: ls
       - name: cd
-        run: cd ci-cd
+        run: cd ..
       - name: pwd
         run: pwd
       - name: add heroku
