@@ -36,6 +36,10 @@ jobs:
       - name: check
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: heroku status
+      - name: init
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: git init
       - name: Add remote
         env:
