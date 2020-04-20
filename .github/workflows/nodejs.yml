@@ -45,7 +45,7 @@ jobs:
       - name: add heroku
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: git remote add heroku https://heroku:a9855ac6-ed01-4106-87b3-99cdb40acb2b@git.heroku.com/ci-cd-proj.git
+        run: git remote add heroku https://heroku:${{ secrets.heroku_api_key }}@git.heroku.com/${{ secrets.heroku_app_name }}.git
       - name: push remote
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
