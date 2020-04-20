@@ -32,7 +32,11 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Add remote
+      - name: add remote
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: heroku git:remote -a ci-cd-proj
+      - name: push remote
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: git remote push https://abc:${{ secrets.HEROKU_API_KEY }}@git.heroku.com/ci-cd-proj.git master
