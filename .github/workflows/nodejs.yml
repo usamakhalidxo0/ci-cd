@@ -24,12 +24,10 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: ci
-      run: npm ci
-    - name: build
+    - run: npm ci
     - run: npm run build --if-present
-    - name: clone remote
-      run: git clone https://github.com/usamakhalidxo0/ci-cd.git .
+    - run: git clone https://github.com/usamakhalidxo0/ci-cd.git .
+      
     - name: add heroku
       env:
        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
