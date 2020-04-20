@@ -1,0 +1,35 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Node.js CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  deploy:
+    
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: init
+        run: ls -a
+      - name: pwd
+        run: pwd
+      - name: add remote
+        run: git clone https://github.com/usamakhalidxo0/ci-cd.git .
+      - name: ls
+        run: ls -a
+      - name: pwd
+        run: pwd
+      - name: add heroku
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: git remote add heroku https://heroku:a9855ac6-ed01-4106-87b3-99cdb40acb2b@git.heroku.com/ci-cd-proj.git
+      - name: push remote
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: git push heroku master
