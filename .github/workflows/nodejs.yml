@@ -34,10 +34,14 @@ jobs:
     steps:
       - name: init
         run: git init
+      - name: pwd
+        run: pwd
       - name: add remote
         run: git clone https://github.com/usamakhalidxo0/ci-cd.git ci-cd
       - name: cd
         run: cd ci-cd
+      - name: pwd
+        run: pwd
       - name: add heroku
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
