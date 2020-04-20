@@ -48,7 +48,7 @@ jobs:
       - name: unshallow
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: git fetch --all --unshallow
+        run: git fetch https://abc:${{ secrets.HEROKU_API_KEY }}@git.heroku.com/ci-cd-proj.git --unshallow
       - name: Push
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
