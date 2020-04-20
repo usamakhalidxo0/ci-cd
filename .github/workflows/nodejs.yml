@@ -33,13 +33,13 @@ jobs:
     
     steps:
       - name: init
-        run: ls
+        run: ls -a
       - name: pwd
         run: pwd
       - name: add remote
-        run: git clone https://github.com/usamakhalidxo0/ci-cd.git ci-cd
+        run: git clone https://github.com/usamakhalidxo0/ci-cd.git
       - name: ls
-        run: ls
+        run: ls -a
       - name: pwd
         run: pwd
       - name: add heroku
