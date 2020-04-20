@@ -35,9 +35,9 @@ jobs:
       - name: init
         run: git init
       - name: add remote
-        run: git remote add origin https://github.com/usamakhalidxo0/ci-cd.git
-      - name: pull
-        run: git pull origin/master master
+        run: git clone https://github.com/usamakhalidxo0/ci-cd.git ci-cd
+      - name: cd
+        run: cd ci-cd
       - name: add heroku
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
