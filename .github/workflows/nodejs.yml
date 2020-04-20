@@ -32,11 +32,11 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: check
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: heroku status
+        run: git init
       - name: Add remote
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
