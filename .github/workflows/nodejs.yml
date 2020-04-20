@@ -32,6 +32,8 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+      - name: init
+        run: git init
       - name: add remote
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
