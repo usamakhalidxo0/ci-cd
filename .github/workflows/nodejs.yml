@@ -10,7 +10,7 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  build and deploy:
 
     runs-on: ubuntu-latest
 
@@ -26,29 +26,16 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
     - run: npm run build --if-present
-    
-  deploy:
-    
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: init
-        run: ls -a
-      - name: pwd
-        run: pwd
-      - name: add remote
-        run: git clone https://github.com/usamakhalidxo0/ci-cd.git .
-      - name: ls
-        run: ls -a
-      - name: pwd
-        run: pwd
-      - name: add heroku
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: git remote add heroku https://heroku:a9855ac6-ed01-4106-87b3-99cdb40acb2b@git.heroku.com/ci-cd-proj.git
-      - name: push remote
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: git push heroku master
+      
+    - name: clone remote
+      run: git clone https://github.com/usamakhalidxo0/ci-cd.git .
+    - name: add heroku
+      env:
+       HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+       run: git remote add heroku https://heroku:a9855ac6-ed01-4106-87b3-99cdb40acb2b@git.heroku.com/ci-cd-proj.git
+    - name: push remote
+      env:
+       HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+       run: git push heroku master
         
     
