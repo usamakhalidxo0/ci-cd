@@ -33,6 +33,8 @@ jobs:
     
     steps:
       - uses: actions/checkout@v2
+      - name: init
+        run: git init
       - name: Add remote
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
